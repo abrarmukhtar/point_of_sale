@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3CD065A4-A85D-49A8-81F0-926F936F2ED3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Husnain</RootNamespace>
+    <AssemblyName>Husnain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v14.1.Core, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v14.1">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v14.1.UI, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Office.v14.1.Core, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v14.1.Core, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v14.1.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v14.1.Core, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Snap.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Snap.v14.1.Core, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Snap.v14.1.Extensions, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v14.1">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v14.1.UI, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v14.1">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v14.1.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v14.1.UI, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v14.1.Wizard, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v14.1">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGauges.v14.1.Core, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v14.1.Extensions, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v14.1.Extensions, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Numerics">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Transactions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Deployment">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="_Modules\Stock\Brands\BrandRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Modules\Stock\Brands\BrandRegistration.Designer.cs">
+      <DependentUpon>BrandRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Stock\Brands_Categories\BrandsCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Modules\Stock\Brands_Categories\BrandsCategories.Designer.cs">
+      <DependentUpon>BrandsCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Stock\Brands_Categories_Products\BrandsCategoriesProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Modules\Stock\Brands_Categories_Products\BrandsCategoriesProducts.Designer.cs">
+      <DependentUpon>BrandsCategoriesProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Stock\Brands_Products_Groups\BrandsProductsGroups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Modules\Stock\Brands_Products_Groups\BrandsProductsGroups.Designer.cs">
+      <DependentUpon>BrandsProductsGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Stock\Credit and Cash on %28Parties%29\Purchase\Purchase_Invoice\Term.cs" />
+    <Compile Include="_Modules\Stock\Incomming_Stock\FMIncommingStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Modules\Stock\Incomming_Stock\FMIncommingStock.Designer.cs">
+      <DependentUpon>FMIncommingStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Stock\Credit and Cash on %28Parties%29\Purchase\Purchase_Invoice_Return\FMPurchaseInvoiceReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Modules\Stock\Credit and Cash on %28Parties%29\Purchase\Purchase_Invoice_Return\FMPurchaseInvoiceReturn.Designer.cs">
+      <DependentUpon>FMPurchaseInvoiceReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Accounts\Vouchers\Receipt\FMAccountsVouchersRec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Modules\Accounts\Vouchers\Receipt\FMAccountsVouchersRec.Designer.cs">
+      <DependentUpon>FMAccountsVouchersRec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Accounts\Vouchers\Payment\Payment\FMAccountsVouchersPay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Modules\Accounts\Vouchers\Payment\Payment\FMAccountsVouchersPay.Designer.cs">
+      <DependentUpon>FMAccountsVouchersPay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Stock\Credit and Cash on %28Parties%29\Sale\Sale_Invoice_Return\FMCreditSaleInvoiceReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Modules\Stock\Credit and Cash on %28Parties%29\Sale\Sale_Invoice_Return\FMCreditSaleInvoiceReturn.Designer.cs">
+      <DependentUpon>FMCreditSaleInvoiceReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Accounts\Accounts_Definition\FMAccountsDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Modules\Accounts\Accounts_Definition\FMAccountsDetails.Designer.cs">
+      <DependentUpon>FMAccountsDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Accounts\Account_Head\FMAccountsHead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Modules\Accounts\Account_Head\FMAccountsHead.Designer.cs">
+      <DependentUpon>FMAccountsHead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Accounts\Vouchers\Payment\Expense\Expense_Report\ExpenseSheet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="_Modules\Accounts\Vouchers\Payment\Expense\Expense_Report\ExpenseSheet.Designer.cs">
+      <DependentUpon>ExpenseSheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Accounts\Vouchers\Payment\Expense\FMExpense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Modules\Accounts\Vouchers\Payment\Expense\FMExpense.Designer.cs">
+      <DependentUpon>FMExpense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Stock\Credit and Cash on %28Parties%29\Sale\Sale_Invoice\CreditSaleInvoice 2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="_Modules\Stock\Credit and Cash on %28Parties%29\Sale\Sale_Invoice\CreditSaleInvoice 2.Designer.cs">
+      <DependentUpon>CreditSaleInvoice 2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Stock\Credit and Cash on %28Parties%29\Sale\Sale_Invoice\FMCreditSaleInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Modules\Stock\Credit and Cash on %28Parties%29\Sale\Sale_Invoice\FMCreditSaleInvoice.Designer.cs">
+      <DependentUpon>FMCreditSaleInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Stock\Credit and Cash on %28Parties%29\Purchase\Purchase_Invoice\FMPurchaseInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Modules\Stock\Credit and Cash on %28Parties%29\Purchase\Purchase_Invoice\FMPurchaseInvoice.Designer.cs">
+      <DependentUpon>FMPurchaseInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Utility\Alerts\GeneralAlerts.cs" />
+    <Compile Include="_Modules\Accounts\Accounts_Reports\General_Ledger\GeneralLedger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_Modules\Accounts\Accounts_Reports\General_Ledger\GeneralLedger.designer.cs">
+      <DependentUpon>GeneralLedger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Accounts\Accounts_Reports\General_Ledger\General_Ledger_Report\LedgerReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="_Modules\Accounts\Accounts_Reports\General_Ledger\General_Ledger_Report\LedgerReport.designer.cs">
+      <DependentUpon>LedgerReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PosDataFile_Data.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PosDataFile_Data.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="_Modules\Utility\Public_Functions\PublicFunctions.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_Modules\Stock\Credit and Cash on %28Parties%29\Purchase\Purchase_Invoice\PurchaseInvoice.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="_Modules\Stock\Credit and Cash on %28Parties%29\Purchase\Purchase_Invoice\PurchaseInvoice.Designer.cs">
+      <DependentUpon>PurchaseInvoice.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="_Modules\Stock\Brands\BrandRegistration.resx">
+      <DependentUpon>BrandRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Stock\Brands_Categories\BrandsCategories.resx">
+      <DependentUpon>BrandsCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Stock\Brands_Categories_Products\BrandsCategoriesProducts.resx">
+      <DependentUpon>BrandsCategoriesProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Stock\Brands_Products_Groups\BrandsProductsGroups.resx">
+      <DependentUpon>BrandsProductsGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Stock\Incomming_Stock\FMIncommingStock.resx">
+      <DependentUpon>FMIncommingStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Stock\Credit and Cash on %28Parties%29\Purchase\Purchase_Invoice_Return\FMPurchaseInvoiceReturn.resx">
+      <DependentUpon>FMPurchaseInvoiceReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Accounts\Vouchers\Receipt\FMAccountsVouchersRec.resx">
+      <DependentUpon>FMAccountsVouchersRec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Accounts\Vouchers\Payment\Payment\FMAccountsVouchersPay.resx">
+      <DependentUpon>FMAccountsVouchersPay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Stock\Credit and Cash on %28Parties%29\Sale\Sale_Invoice_Return\FMCreditSaleInvoiceReturn.resx">
+      <DependentUpon>FMCreditSaleInvoiceReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Accounts\Accounts_Definition\FMAccountsDetails.resx">
+      <DependentUpon>FMAccountsDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Accounts\Account_Head\FMAccountsHead.resx">
+      <DependentUpon>FMAccountsHead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Accounts\Vouchers\Payment\Expense\Expense_Report\ExpenseSheet.resx">
+      <DependentUpon>ExpenseSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Accounts\Vouchers\Payment\Expense\FMExpense.resx">
+      <DependentUpon>FMExpense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Stock\Credit and Cash on %28Parties%29\Sale\Sale_Invoice\CreditSaleInvoice 2.resx">
+      <DependentUpon>CreditSaleInvoice 2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Stock\Credit and Cash on %28Parties%29\Sale\Sale_Invoice\FMCreditSaleInvoice.resx">
+      <DependentUpon>FMCreditSaleInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Stock\Credit and Cash on %28Parties%29\Purchase\Purchase_Invoice\FMPurchaseInvoice.resx">
+      <DependentUpon>FMPurchaseInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Accounts\Accounts_Reports\General_Ledger\GeneralLedger.resx">
+      <DependentUpon>GeneralLedger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Accounts\Accounts_Reports\General_Ledger\General_Ledger_Report\LedgerReport.resx">
+      <DependentUpon>LedgerReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_Modules\Stock\Credit and Cash on %28Parties%29\Purchase\Purchase_Invoice\PurchaseInvoice.resx">
+      <DependentUpon>PurchaseInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="PosDataFile_Data.dbml.layout">
+      <DependentUpon>PosDataFile_Data.dbml</DependentUpon>
+    </None>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="PosDataFile_Data.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>PosDataFile_Data.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

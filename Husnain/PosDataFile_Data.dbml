@@ -1,0 +1,1159 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PosDataFile_Data" Class="PosDataFile_DataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=PosDataFile_Data;Integrated Security=True" SettingsObjectName="Husnain.Properties.Settings" SettingsPropertyName="PosDataFile_DataConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Accounts_Details" Member="Accounts_Details">
+    <Type Name="Accounts_Detail">
+      <Column Name="AccountId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountTitle" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HeadId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ContactName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ResAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="WorkAdd" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ResPh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WorkPh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Mobile2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="OtherPh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Opdr" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Opcr" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="CityId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="AActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Activedt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Limit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="Accounts_Detail_Accounts_Head_Voucher" Member="Accounts_Head_Vouchers" ThisKey="AccountId" OtherKey="FromAccount" Type="Accounts_Head_Voucher" />
+      <Association Name="Accounts_Detail_Accounts_Head_Voucher1" Member="Accounts_Head_Vouchers1" ThisKey="AccountId" OtherKey="ToAccount" Type="Accounts_Head_Voucher" />
+      <Association Name="Accounts_Detail_Accounts_Ledger" Member="Accounts_Ledgers" ThisKey="AccountId" OtherKey="accountno" Type="Accounts_Ledger" />
+      <Association Name="Accounts_Detail_Brand" Member="Brands" ThisKey="AccountId" OtherKey="ManfId" Type="Brand" />
+      <Association Name="Accounts_Detail_Manufacturer" Member="Manufacturers" ThisKey="AccountId" OtherKey="AccountDetId" Type="Manufacturer" />
+      <Association Name="Accounts_Detail_Master_Credit_Sale" Member="Master_Credit_Sales" ThisKey="AccountId" OtherKey="AccountId" Type="Master_Credit_Sale" />
+      <Association Name="Accounts_Detail_Master_Expense" Member="Master_Expenses" ThisKey="AccountId" OtherKey="FromAcc" Type="Master_Expense" />
+      <Association Name="Accounts_Detail_Master_Purchase" Member="Master_Purchases" ThisKey="AccountId" OtherKey="AccountId" Type="Master_Purchase" />
+      <Association Name="Accounts_Detail_Master_Purchase_Graphic" Member="Master_Purchase_Graphics" ThisKey="AccountId" OtherKey="FromAccountId" Type="Master_Purchase_Graphic" />
+      <Association Name="Accounts_Head_Accounts_Detail" Member="Accounts_Head" ThisKey="HeadId" OtherKey="HeadId" Type="Accounts_Head" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Accounts_Head" Member="Accounts_Heads">
+    <Type Name="Accounts_Head">
+      <Column Name="HeadId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HeadDetail" Type="System.String" DbType="NVarChar(2550)" CanBeNull="true" />
+      <Column Name="HActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Accounts_Head_Accounts_Detail" Member="Accounts_Details" ThisKey="HeadId" OtherKey="HeadId" Type="Accounts_Detail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Accounts_Head_Vouchers" Member="Accounts_Head_Vouchers">
+    <Type Name="Accounts_Head_Voucher">
+      <Column Name="vcnum" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="vcType" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="vcDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FromAccount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ToAccount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Narration" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="GLFId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="GLTId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="post" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Accounts_Detail_Accounts_Head_Voucher" Member="Accounts_Detail" ThisKey="FromAccount" OtherKey="AccountId" Type="Accounts_Detail" IsForeignKey="true" />
+      <Association Name="Accounts_Detail_Accounts_Head_Voucher1" Member="Accounts_Detail1" ThisKey="ToAccount" OtherKey="AccountId" Type="Accounts_Detail" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Accounts_Ledgers" Member="Accounts_Ledgers">
+    <Type Name="Accounts_Ledger">
+      <Column Name="transid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="accountno" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="trdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="descriptions" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="vcnumber" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="vcname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="debit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="credit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="posted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Accounts_Detail_Accounts_Ledger" Member="Accounts_Detail" ThisKey="accountno" OtherKey="AccountId" Type="Accounts_Detail" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Brand" Member="Brands">
+    <Type Name="Brand">
+      <Column Name="BrandId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BrandName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="ManfId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="BActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Accounts_Detail_Brand" Member="Accounts_Detail" ThisKey="ManfId" OtherKey="AccountId" Type="Accounts_Detail" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Brand_Category" Member="Brand_Categories">
+    <Type Name="Brand_Category">
+      <Column Name="BrandCatID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BrandCat" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="BCActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Brand_Category_Brand_Category_Product" Member="Brand_Category_Products" ThisKey="BrandCatID" OtherKey="BrandCatID" Type="Brand_Category_Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Brand_Category_Products" Member="Brand_Category_Products">
+    <Type Name="Brand_Category_Product">
+      <Column Name="ProductId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="InitialStock" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Packing" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="taxable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="taxrate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="TaxVal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="pic" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="StockEndLimit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BrandCatID" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="BCPActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BrandId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Association Name="Brand_Category_Product_Brands_Products_Group_Detail" Member="Brands_Products_Group_Details" ThisKey="ProductId" OtherKey="ProdIdR" Type="Brands_Products_Group_Detail" />
+      <Association Name="Brand_Category_Product_Master_Credit_Sale_Detail" Member="Master_Credit_Sale_Details" ThisKey="ProductId" OtherKey="ProdId" Type="Master_Credit_Sale_Detail" />
+      <Association Name="Brand_Category_Product_Master_Incoming_Stock" Member="Master_Incoming_Stocks" ThisKey="ProductId" OtherKey="ProdId" Type="Master_Incoming_Stock" />
+      <Association Name="Brand_Category_Product_Master_Purchase_Detail" Member="Master_Purchase_Details" ThisKey="ProductId" OtherKey="ProdId" Type="Master_Purchase_Detail" />
+      <Association Name="Brand_Category_Brand_Category_Product" Member="Brand_Category" ThisKey="BrandCatID" OtherKey="BrandCatID" Type="Brand_Category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Brands_Products_Group" Member="Brands_Products_Groups">
+    <Type Name="Brands_Products_Group">
+      <Column Name="GPId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GPName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="InitialStock" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="StockEndLimit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GPActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Brands_Products_Group_Details" Member="Brands_Products_Group_Details">
+    <Type Name="Brands_Products_Group_Detail">
+      <Column Name="GPDId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProdId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Qty" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="GPId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ProdIdR" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Association Name="Brand_Category_Product_Brands_Products_Group_Detail" Member="Brand_Category_Product" ThisKey="ProdIdR" OtherKey="ProductId" Type="Brand_Category_Product" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Country" Member="Countries">
+    <Type Name="Country">
+      <Column Name="CountryCode" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CountryName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Alpha2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Alpha3" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="NCode" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Country_Country_Province" Member="Country_Provinces" ThisKey="CountryCode" OtherKey="CountryCode" Type="Country_Province" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Country_Province" Member="Country_Provinces">
+    <Type Name="Country_Province">
+      <Column Name="ProvinceCode" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CountryCode" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ProvinceName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CPActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Country_Province_Country_Province_City" Member="Country_Province_Cities" ThisKey="ProvinceCode" OtherKey="CountryProvinceCode" Type="Country_Province_City" />
+      <Association Name="Country_Country_Province" Member="Country" ThisKey="CountryCode" OtherKey="CountryCode" Type="Country" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Country_Province_Cities" Member="Country_Province_Cities">
+    <Type Name="Country_Province_City">
+      <Column Name="CityId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CountryProvinceCode" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CityName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CPCActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Country_Province_Country_Province_City" Member="Country_Province" ThisKey="CountryProvinceCode" OtherKey="ProvinceCode" Type="Country_Province" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Country_Province_Cities_PO" Member="Country_Province_Cities_POs">
+    <Type Name="Country_Province_Cities_PO">
+      <Column Name="ZipCode" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AreaOfPO" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CityId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ZActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.General_Ledger" Member="General_Ledgers">
+    <Type Name="General_Ledger">
+      <Column Name="transid" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="accountno" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="trdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="vcnumber" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="vcname" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="debit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="credit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="posted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Manufacturer" Member="Manufacturers">
+    <Type Name="Manufacturer">
+      <Column Name="ManufId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Manufacturer" Member="Manufacturer1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="AccountDetId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="MActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Accounts_Detail_Manufacturer" Member="Accounts_Detail" ThisKey="AccountDetId" OtherKey="AccountId" Type="Accounts_Detail" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Master_Credit_Sale" Member="Master_Credit_Sales">
+    <Type Name="Master_Credit_Sale">
+      <Column Name="CrInvId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="FromAccountId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="InvDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GSTRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="GSTValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Term" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TotalCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherCharges" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherDiscount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ReturnDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="WalkIn" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PhoneNo" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Association Name="Master_Credit_Sale_Master_Credit_Sale_Detail" Member="Master_Credit_Sale_Details" ThisKey="CrInvId" OtherKey="CrInvId" Type="Master_Credit_Sale_Detail" />
+      <Association Name="Master_Credit_Sale_Master_Credit_Sale_Return" Member="Master_Credit_Sale_Returns" ThisKey="CrInvId" OtherKey="CrInvId" Type="Master_Credit_Sale_Return" />
+      <Association Name="Master_Credit_Sale_Master_Credit_Sale_Sets_Detal" Member="Master_Credit_Sale_Sets_Detals" ThisKey="CrInvId" OtherKey="CrInvId" Type="Master_Credit_Sale_Sets_Detal" />
+      <Association Name="Accounts_Detail_Master_Credit_Sale" Member="Accounts_Detail" ThisKey="AccountId" OtherKey="AccountId" Type="Accounts_Detail" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Master_Credit_Sale_Details" Member="Master_Credit_Sale_Details">
+    <Type Name="Master_Credit_Sale_Detail">
+      <Column Name="CrInvDetId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CrInvId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ProdId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Bonus" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SaleCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Master_Credit_Sale_Detail_Master_Credit_Sale_Details_Return" Member="Master_Credit_Sale_Details_Returns" ThisKey="CrInvDetId" OtherKey="CrInvDetId" Type="Master_Credit_Sale_Details_Return" />
+      <Association Name="Brand_Category_Product_Master_Credit_Sale_Detail" Member="Brand_Category_Product" ThisKey="ProdId" OtherKey="ProductId" Type="Brand_Category_Product" IsForeignKey="true" />
+      <Association Name="Master_Credit_Sale_Master_Credit_Sale_Detail" Member="Master_Credit_Sale" ThisKey="CrInvId" OtherKey="CrInvId" Type="Master_Credit_Sale" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Master_Credit_Sale_Details_Return" Member="Master_Credit_Sale_Details_Returns">
+    <Type Name="Master_Credit_Sale_Details_Return">
+      <Column Name="SRDId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SRId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CrInvDetId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ProdId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Bonus" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SaleCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Master_Credit_Sale_Detail_Master_Credit_Sale_Details_Return" Member="Master_Credit_Sale_Detail" ThisKey="CrInvDetId" OtherKey="CrInvDetId" Type="Master_Credit_Sale_Detail" IsForeignKey="true" />
+      <Association Name="Master_Credit_Sale_Return_Master_Credit_Sale_Details_Return" Member="Master_Credit_Sale_Return" ThisKey="SRId" OtherKey="SRId" Type="Master_Credit_Sale_Return" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Master_Credit_Sale_Return" Member="Master_Credit_Sale_Returns">
+    <Type Name="Master_Credit_Sale_Return">
+      <Column Name="SRId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CrInvId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="AccountId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="FromAccountId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="InvDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GSTRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="GSTValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Term" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TotalCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherCharges" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherDiscount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ReturnDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="WalkIn" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PhoneNo" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Association Name="Master_Credit_Sale_Return_Master_Credit_Sale_Details_Return" Member="Master_Credit_Sale_Details_Returns" ThisKey="SRId" OtherKey="SRId" Type="Master_Credit_Sale_Details_Return" />
+      <Association Name="Master_Credit_Sale_Master_Credit_Sale_Return" Member="Master_Credit_Sale" ThisKey="CrInvId" OtherKey="CrInvId" Type="Master_Credit_Sale" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Master_Credit_Sale_Sets_Detals" Member="Master_Credit_Sale_Sets_Detals">
+    <Type Name="Master_Credit_Sale_Sets_Detal">
+      <Column Name="SaleGPId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CrInvId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="GPId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Bonus" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Master_Credit_Sale_Master_Credit_Sale_Sets_Detal" Member="Master_Credit_Sale" ThisKey="CrInvId" OtherKey="CrInvId" Type="Master_Credit_Sale" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Master_Expense" Member="Master_Expenses">
+    <Type Name="Master_Expense">
+      <Column Name="ExpsheetID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FromAcc" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="toatalexp" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Master_Expense_Master_Expense_Detail" Member="Master_Expense_Details" ThisKey="ExpsheetID" OtherKey="expid" Type="Master_Expense_Detail" />
+      <Association Name="Accounts_Detail_Master_Expense" Member="Accounts_Detail" ThisKey="FromAcc" OtherKey="AccountId" Type="Accounts_Detail" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Master_Expense_Details" Member="Master_Expense_Details">
+    <Type Name="Master_Expense_Detail">
+      <Column Name="ID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="expid" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="expdatetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Descrip" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="Master_Expense_Master_Expense_Detail" Member="Master_Expense" ThisKey="expid" OtherKey="ExpsheetID" Type="Master_Expense" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Master_Incoming_Stock" Member="Master_Incoming_Stocks">
+    <Type Name="Master_Incoming_Stock">
+      <Column Name="stockno" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StockDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProdId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="PurchPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Packing" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GatePass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Brand_Category_Product_Master_Incoming_Stock" Member="Brand_Category_Product" ThisKey="ProdId" OtherKey="ProductId" Type="Brand_Category_Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Master_Purchase" Member="Master_Purchases">
+    <Type Name="Master_Purchase">
+      <Column Name="stockno" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AccountId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ToAccountId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Salesman" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SalesmanPhone" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="SuppInv" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ReceiveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GSTRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="GSTValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="TotalCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherCharges" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherDiscount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Term" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Master_Purchase_Master_Purchase_Detail" Member="Master_Purchase_Details" ThisKey="stockno" OtherKey="StockId" Type="Master_Purchase_Detail" />
+      <Association Name="Master_Purchase_Master_Purchase_Return" Member="Master_Purchase_Returns" ThisKey="stockno" OtherKey="stockno" Type="Master_Purchase_Return" />
+      <Association Name="Master_Purchase_Master_Purchase_Sets_Detal" Member="Master_Purchase_Sets_Detals" ThisKey="stockno" OtherKey="stockno" Type="Master_Purchase_Sets_Detal" />
+      <Association Name="Accounts_Detail_Master_Purchase" Member="Accounts_Detail" ThisKey="AccountId" OtherKey="AccountId" Type="Accounts_Detail" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Master_Purchase_Detail" Member="Master_Purchase_Details">
+    <Type Name="Master_Purchase_Detail">
+      <Column Name="StockDetId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="StockId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ProdId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Packing" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Bonus" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SaleCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Master_Purchase_Detail_Master_Purchase_Detail_Return" Member="Master_Purchase_Detail_Returns" ThisKey="StockDetId" OtherKey="StockDetId" Type="Master_Purchase_Detail_Return" />
+      <Association Name="Brand_Category_Product_Master_Purchase_Detail" Member="Brand_Category_Product" ThisKey="ProdId" OtherKey="ProductId" Type="Brand_Category_Product" IsForeignKey="true" />
+      <Association Name="Master_Purchase_Master_Purchase_Detail" Member="Master_Purchase" ThisKey="StockId" OtherKey="stockno" Type="Master_Purchase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Master_Purchase_Detail_Return" Member="Master_Purchase_Detail_Returns">
+    <Type Name="Master_Purchase_Detail_Return">
+      <Column Name="PRDId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PRId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="StockDetId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ProdId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Packing" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Bonus" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SaleCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Master_Purchase_Detail_Master_Purchase_Detail_Return" Member="Master_Purchase_Detail" ThisKey="StockDetId" OtherKey="StockDetId" Type="Master_Purchase_Detail" IsForeignKey="true" />
+      <Association Name="Master_Purchase_Return_Master_Purchase_Detail_Return" Member="Master_Purchase_Return" ThisKey="PRId" OtherKey="PRId" Type="Master_Purchase_Return" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Master_Purchase_Graphics" Member="Master_Purchase_Graphics">
+    <Type Name="Master_Purchase_Graphic">
+      <Column Name="MPGId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FromAccountId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="TotalCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherCharges" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherDiscount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Advance" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Master_Purchase_Graphic_Master_Purchase_Graphics_Detail" Member="Master_Purchase_Graphics_Details" ThisKey="MPGId" OtherKey="MPGId" Type="Master_Purchase_Graphics_Detail" />
+      <Association Name="Accounts_Detail_Master_Purchase_Graphic" Member="Accounts_Detail" ThisKey="FromAccountId" OtherKey="AccountId" Type="Accounts_Detail" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Master_Purchase_Graphics_Details" Member="Master_Purchase_Graphics_Details">
+    <Type Name="Master_Purchase_Graphics_Detail">
+      <Column Name="MPGDId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MPGId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ProdId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Category" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PurchCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Master_Purchase_Graphic_Master_Purchase_Graphics_Detail" Member="Master_Purchase_Graphic" ThisKey="MPGId" OtherKey="MPGId" Type="Master_Purchase_Graphic" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Master_Purchase_Return" Member="Master_Purchase_Returns">
+    <Type Name="Master_Purchase_Return">
+      <Column Name="PRId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="stockno" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ToAccountId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Salesman" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SalesmanPhone" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="SuppInv" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ReceiveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GSTRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="GSTValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="TotalCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherCharges" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherDiscount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Term" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Master_Purchase_Return_Master_Purchase_Detail_Return" Member="Master_Purchase_Detail_Returns" ThisKey="PRId" OtherKey="PRId" Type="Master_Purchase_Detail_Return" />
+      <Association Name="Master_Purchase_Master_Purchase_Return" Member="Master_Purchase" ThisKey="stockno" OtherKey="stockno" Type="Master_Purchase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Master_Purchase_Sets_Detals" Member="Master_Purchase_Sets_Detals">
+    <Type Name="Master_Purchase_Sets_Detal">
+      <Column Name="PurchGPId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="stockno" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="GPId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Bonus" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Master_Purchase_Master_Purchase_Sets_Detal" Member="Master_Purchase" ThisKey="stockno" OtherKey="stockno" Type="Master_Purchase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Purchase_Order" Member="Purchase_Orders">
+    <Type Name="Purchase_Order">
+      <Column Name="PurchOrderId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SuppId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="PurchId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="OrderActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Purchase_Order_Details" Member="Purchase_Order_Details">
+    <Type Name="Purchase_Order_Detail">
+      <Column Name="PurchOrderDetId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PurchOrderId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ProdId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="RequiredPacked" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PackedQuantity" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchasePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OrderItemStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetAccountsDetails" Method="GetAccountsDetails">
+    <ElementType Name="GetAccountsDetailsResult">
+      <Column Name="AccountId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountTitle" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Activedt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ContactName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Limit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Mobile2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Opcr" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Opdr" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherPh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ResAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ResPh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="AActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="WorkAdd" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="WorkPh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CityId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CityName" Type="System.String" DbType="NVarChar(306)" CanBeNull="true" />
+      <Column Name="HeadId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="HeadDetail" Type="System.String" DbType="NVarChar(2550)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetAccountsHead" Method="GetAccountsHead">
+    <ElementType Name="GetAccountsHeadResult">
+      <Column Name="HeadId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="HeadDetail" Type="System.String" DbType="NVarChar(2550)" CanBeNull="true" />
+      <Column Name="PL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="HActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetBrands" Method="GetBrands">
+    <ElementType Name="GetBrandsResult">
+      <Column Name="BrandName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BrandId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ManfId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Manufacturer" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="BActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetBrandsCate" Method="GetBrandsCate">
+    <ElementType Name="GetBrandsCateResult">
+      <Column Name="BrandCat" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="BrandCatID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="BCActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetBrandsCateProducts" Method="GetBrandsCateProducts">
+    <ElementType Name="GetBrandsCateProductsResult">
+      <Column Name="ProductId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="InitialStock" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Packing" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="taxable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="taxrate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="TaxVal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="pic" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="StockEndLimit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BCPActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BrandCat" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="BrandCatID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="BrandName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BrandId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetCountaryProvinceCity" Method="GetCountaryProvinceCity">
+    <ElementType Name="GetCountaryProvinceCityResult">
+      <Column Name="CityId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryProvinceCode" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CityName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CPCActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ProvinceCode" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryCode" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ProvinceName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CPActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CountryCode1" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Alpha2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Alpha3" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="NCode" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CityDetail" Type="System.String" DbType="NVarChar(306)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_Accounts_Details_Insert" Method="sp_Accounts_Details_Insert">
+    <Parameter Name="AccountNumber" Parameter="accountNumber" Type="System.Decimal" DbType="Decimal(18,0)" Direction="InOut" />
+    <Parameter Name="AccountTitle" Parameter="accountTitle" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="HeadId" Parameter="headId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="ContactName" Parameter="contactName" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="ResAddress" Parameter="resAddress" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="WorkAdd" Parameter="workAdd" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ResPh" Parameter="resPh" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="WorkPh" Parameter="workPh" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="Mobile" Parameter="mobile" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="Mobile2" Parameter="mobile2" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="Fax" Parameter="fax" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="OtherPh" Parameter="otherPh" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="Opdr" Parameter="opdr" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Opcr" Parameter="opcr" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="CityId" Parameter="cityId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="AActive" Parameter="aActive" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Remarks" Parameter="remarks" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Activedt" Parameter="activedt" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Limit" Parameter="limit" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Accounts_Head_Vouchers_Insert" Method="sp_Accounts_Head_Vouchers_Insert">
+    <Parameter Name="vcnum" Type="System.Decimal" DbType="Decimal(18,0)" Direction="InOut" />
+    <Parameter Name="vcType" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="vcDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="FromAccount" Parameter="fromAccount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="ToAccount" Parameter="toAccount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="Narration" Parameter="narration" Type="System.String" DbType="Text" />
+    <Parameter Name="Amount" Parameter="amount" Type="System.Decimal" DbType="Money" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Accounts_Ledgers_Insert" Method="sp_Accounts_Ledgers_Insert">
+    <Parameter Name="AccountNo" Parameter="accountNo" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="trDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="descriptions" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="vcNumber" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="vcName" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="debit" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="credit" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="posted" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Brands_Products_Group_Details_Delete" Method="sp_Brands_Products_Group_Details_Delete">
+    <Parameter Name="GPId" Parameter="gPId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Brands_Products_Group_Details_Insert" Method="sp_Brands_Products_Group_Details_Insert">
+    <Parameter Name="ProdId" Parameter="prodId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="Qty" Parameter="qty" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="GPId" Parameter="gPId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="ProdIdR" Parameter="prodIdR" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Brands_Products_Group_Insert" Method="sp_Brands_Products_Group_Insert">
+    <Parameter Name="ProductId" Parameter="productId" Type="System.Decimal" DbType="Decimal(18,0)" Direction="InOut" />
+    <Parameter Name="ProductName" Parameter="productName" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="InitialStock" Parameter="initialStock" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="SalePrice" Parameter="salePrice" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="PurchPrice" Parameter="purchPrice" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Packing" Parameter="packing" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="taxable" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="taxrate" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="TaxVal" Parameter="taxVal" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="StockEndLimit" Parameter="stockEndLimit" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="note" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="BrandCatID" Parameter="brandCatID" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="BCPActive" Parameter="bCPActive" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="BrandId" Parameter="brandId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Brands_Products_Group_Update" Method="sp_Brands_Products_Group_Update">
+    <Parameter Name="ProductId" Parameter="productId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="ProductName" Parameter="productName" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="InitialStock" Parameter="initialStock" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="SalePrice" Parameter="salePrice" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="PurchPrice" Parameter="purchPrice" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Packing" Parameter="packing" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="taxable" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="taxrate" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="TaxVal" Parameter="taxVal" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="StockEndLimit" Parameter="stockEndLimit" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="note" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="BrandCatID" Parameter="brandCatID" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="BCPActive" Parameter="bCPActive" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="BrandId" Parameter="brandId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Master_Credit_Sale_Details_Insert" Method="sp_Master_Credit_Sale_Details_Insert">
+    <Parameter Name="CrInvId" Parameter="crInvId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="ProdId" Parameter="prodId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Bonus" Parameter="bonus" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="PurchCost" Parameter="purchCost" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="SaleCost" Parameter="saleCost" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Total" Parameter="total" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="DiscountRate" Parameter="discountRate" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="DiscountValue" Parameter="discountValue" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="NetTotal" Parameter="netTotal" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="ExpDate" Parameter="expDate" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Master_Expense_Details_Insert" Method="sp_Master_Expense_Details_Insert">
+    <Parameter Name="expid" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="expdatetime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Descrip" Parameter="descrip" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="amount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Comments" Parameter="comments" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Master_Expense_Insert" Method="sp_Master_Expense_Insert">
+    <Parameter Name="ExpsheetID" Parameter="expsheetID" Type="System.Decimal" DbType="Decimal(18,0)" Direction="InOut" />
+    <Parameter Name="ExpDate" Parameter="expDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="FromAcc" Parameter="fromAcc" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="toatalexp" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Note" Parameter="note" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_PurchaseMasterDetails_Insert" Method="sp_PurchaseMasterDetails_Insert">
+    <Parameter Name="StockId" Parameter="stockId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="ProdId" Parameter="prodId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="Packing" Parameter="packing" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Bonus" Parameter="bonus" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="PurchCost" Parameter="purchCost" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="SaleCost" Parameter="saleCost" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Total" Parameter="total" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="DiscountRate" Parameter="discountRate" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="DiscountValue" Parameter="discountValue" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="NetTotal" Parameter="netTotal" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="ExpDate" Parameter="expDate" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spGetAccounts" Method="spGetAccounts">
+    <ElementType Name="spGetAccountsResult">
+      <Column Name="AccountId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountTitle" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ContactName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HeadDetail" Type="System.String" DbType="NVarChar(2550)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetAllProductsForSets" Method="spGetAllProductsForSets">
+    <Parameter Name="StockAccount" Parameter="stockAccount" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <ElementType Name="spGetAllProductsForSetsResult">
+      <Column Name="ProductId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Stock" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="BrandName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Categories" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Packing" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Manufacturer" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetAllProductsSets" Method="spGetAllProductsSets">
+    <ElementType Name="spGetAllProductsSetsResult">
+      <Column Name="ProductId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="InitialStock" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Packing" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="taxable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="taxrate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="TaxVal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="pic" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="StockEndLimit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BCPActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetAllVouchers" Method="spGetAllVouchers">
+    <ElementType Name="spGetAllVouchersResult">
+      <Column Name="vcnum" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="vcDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="vcType" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Narration" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="FromAccount" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FromAccountId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ToAccount" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ToAccountId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetBalanceBetweenTwoDates" Method="spGetBalanceBetweenTwoDates">
+    <Parameter Name="frmdate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="todate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="actno" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <ElementType Name="spGetBalanceBetweenTwoDatesResult">
+      <Column Name="BetweenBalance" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetGroupsProductDetails" Method="spGetGroupsProductDetails">
+    <Parameter Name="GPId" Parameter="gPId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <ElementType Name="spGetGroupsProductDetailsResult">
+      <Column Name="GPDId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="colQty" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="colProductName" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetTotalBalance" Method="spGetTotalBalance">
+    <Parameter Name="actno" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <ElementType Name="spGetTotalBalanceResult">
+      <Column Name="TotalBalance" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetMasterCreditSaleDetails" Method="GetMasterCreditSaleDetails">
+    <Parameter Name="CrInvId" Parameter="crInvId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <ElementType Name="GetMasterCreditSaleDetailsResult">
+      <Column Name="CrInvDetId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="CrInvId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ProdId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Bonus" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SaleCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="colProductName" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="colPurchCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="colSaleCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="colPacked" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="colExpiry" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="colBonus" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="colDiscountRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_Accounts_Ledgers_Delete" Method="sp_Accounts_Ledgers_Delete">
+    <Parameter Name="vcnumber" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="vcName" Type="System.String" DbType="NVarChar(255)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spGetAllVouchersFrom" Method="spGetAllVouchersFrom">
+    <ElementType Name="spGetAllVouchersFromResult">
+      <Column Name="vcnum" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="vcDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="vcType" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Narration" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="FromAccount" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FromAccountId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetAllVouchersTo" Method="spGetAllVouchersTo">
+    <ElementType Name="spGetAllVouchersToResult">
+      <Column Name="vcnum" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="vcDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="vcType" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Narration" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ToAccount" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ToAccountId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetBalanceBetweenTwoDatesWithNull" Method="spGetBalanceBetweenTwoDatesWithNull">
+    <Parameter Name="frmdate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="todate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="spGetBalanceBetweenTwoDatesWithNullResult">
+      <Column Name="BetweenBalance" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetTotalBalanceWithNull" Method="spGetTotalBalanceWithNull">
+    <ElementType Name="spGetTotalBalanceWithNullResult">
+      <Column Name="TotalBalance" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetMasterPurchaseDetails" Method="GetMasterPurchaseDetails">
+    <Parameter Name="StockId" Parameter="stockId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <ElementType Name="GetMasterPurchaseDetailsResult">
+      <Column Name="StockDetId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="StockId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ProdId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Packing" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Bonus" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SaleCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="colProductName" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="colPurchCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="colSaleCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="colPacking" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="colPacked" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="colExpiry" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="colBonus" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="colDiscountRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_PurchaseMasterDetailsReturn_Insert" Method="sp_PurchaseMasterDetailsReturn_Insert">
+    <Parameter Name="PRId" Parameter="pRId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="StockDetId" Parameter="stockDetId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="ProdId" Parameter="prodId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="Packing" Parameter="packing" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Bonus" Parameter="bonus" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="PurchCost" Parameter="purchCost" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="SaleCost" Parameter="saleCost" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Total" Parameter="total" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="DiscountRate" Parameter="discountRate" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="DiscountValue" Parameter="discountValue" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="NetTotal" Parameter="netTotal" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="ExpDate" Parameter="expDate" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetIncomingStockDetail" Method="GetIncomingStockDetail">
+    <ElementType Name="GetIncomingStockDetailResult">
+      <Column Name="stockno" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="StockDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProductId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="InitialStock" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="taxable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="taxrate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="TaxVal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="pic" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="StockEndLimit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="BrandCat" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="BrandCatID" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="BrandName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="BrandId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Packing" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GatePass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_Master_Incoming_Stock_Insert" Method="sp_Master_Incoming_Stock_Insert">
+    <Parameter Name="StockNo" Parameter="stockNo" Type="System.Decimal" DbType="Decimal(18,0)" Direction="InOut" />
+    <Parameter Name="StockDate" Parameter="stockDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ProdId" Parameter="prodId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="PurchPrice" Parameter="purchPrice" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Packing" Parameter="packing" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="TotalAmount" Parameter="totalAmount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Note" Parameter="note" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="GatePass" Parameter="gatePass" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Master_Credit_Sale_Details_Return_Insert" Method="sp_Master_Credit_Sale_Details_Return_Insert">
+    <Parameter Name="SRId" Parameter="sRId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="CrInvDetId" Parameter="crInvDetId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="ProdId" Parameter="prodId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="Quantity" Parameter="quantity" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Bonus" Parameter="bonus" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="PurchCost" Parameter="purchCost" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="SaleCost" Parameter="saleCost" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Total" Parameter="total" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="DiscountRate" Parameter="discountRate" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="DiscountValue" Parameter="discountValue" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="NetTotal" Parameter="netTotal" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="ExpDate" Parameter="expDate" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spGetAllProductsInclSales" Method="spGetAllProductsInclSales">
+    <Parameter Name="CrInvId" Parameter="crInvId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <ElementType Name="spGetAllProductsInclSalesResult">
+      <Column Name="CrInvId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CrInvDetId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ProdId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ProductId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Bonus" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SaleCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetAllPurchaseDetails" Method="spGetAllPurchaseDetails">
+    <Parameter Name="StockId" Parameter="stockId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <ElementType Name="spGetAllPurchaseDetailsResult">
+      <Column Name="StockId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="StockDetId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ProdId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ProductId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="packed" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Packing" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Bonus" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SaleCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="DiscountRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ExpDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spGetAllProductsStock" Method="spGetAllProductsStock">
+    <ElementType Name="spGetAllProductsStockResult">
+      <Column Name="ProductId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Stock" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="BrandName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Categories" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Packing" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="PurchPrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Manufacturer" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_PurchaseMaster_Insert" Method="sp_PurchaseMaster_Insert">
+    <Parameter Name="stockno" Type="System.Decimal" DbType="Decimal(18,0)" Direction="InOut" />
+    <Parameter Name="AccountId" Parameter="accountId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="Salesman" Parameter="salesman" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="SalesmanPhone" Parameter="salesmanPhone" Type="System.String" DbType="NVarChar(11)" />
+    <Parameter Name="SuppInv" Parameter="suppInv" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="ReceiveDate" Parameter="receiveDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="GSTRate" Parameter="gSTRate" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="GSTValue" Parameter="gSTValue" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="TotalCost" Parameter="totalCost" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="OtherCharges" Parameter="otherCharges" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="OtherDiscount" Parameter="otherDiscount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="NetTotal" Parameter="netTotal" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="note" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ToAccountId" Parameter="toAccountId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="Term" Parameter="term" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_PurchaseMasterReturn_Insert" Method="sp_PurchaseMasterReturn_Insert">
+    <Parameter Name="PRId" Parameter="pRId" Type="System.Decimal" DbType="Decimal(18,0)" Direction="InOut" />
+    <Parameter Name="stockno" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="AccountId" Parameter="accountId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="Salesman" Parameter="salesman" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="SalesmanPhone" Parameter="salesmanPhone" Type="System.String" DbType="NVarChar(11)" />
+    <Parameter Name="SuppInv" Parameter="suppInv" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="ReceiveDate" Parameter="receiveDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="GSTRate" Parameter="gSTRate" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="GSTValue" Parameter="gSTValue" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="TotalCost" Parameter="totalCost" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="OtherCharges" Parameter="otherCharges" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="OtherDiscount" Parameter="otherDiscount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="NetTotal" Parameter="netTotal" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="note" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ToAccountId" Parameter="toAccountId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="Term" Parameter="term" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Master_Credit_Sale_Insert" Method="sp_Master_Credit_Sale_Insert">
+    <Parameter Name="CrInvId" Parameter="crInvId" Type="System.Decimal" DbType="Decimal(18,0)" Direction="InOut" />
+    <Parameter Name="FromAccountId" Parameter="fromAccountId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="InvDate" Parameter="invDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="GSTRate" Parameter="gSTRate" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="GSTValue" Parameter="gSTValue" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Term" Parameter="term" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TotalCost" Parameter="totalCost" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="OtherCharges" Parameter="otherCharges" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="OtherDiscount" Parameter="otherDiscount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="NetTotal" Parameter="netTotal" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="note" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ReturnDate" Parameter="returnDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="AccountId" Parameter="accountId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="WalkIn" Parameter="walkIn" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="PhoneNo" Parameter="phoneNo" Type="System.String" DbType="NVarChar(15)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetMasterSaleParties" Method="GetMasterSaleParties">
+    <Parameter Name="Term" Parameter="term" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetMasterSalePartiesResult">
+      <Column Name="ToAccount" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ToAccountId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CrInvId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="FromAccountId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="InvDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GSTRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="GSTValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Term" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TotalCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherCharges" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherDiscount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ReturnDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="WalkIn" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PhoneNo" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="AccountId1" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="AccountTitle" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HeadId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ContactName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ResAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="WorkAdd" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ResPh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WorkPh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Mobile2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="OtherPh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Opdr" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Opcr" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="CityId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="AActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Activedt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Limit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetMasterSaleWalkIn" Method="GetMasterSaleWalkIn">
+    <Parameter Name="Term" Parameter="term" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetMasterSaleWalkInResult">
+      <Column Name="ToAccount" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ToAccountId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CrInvId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="FromAccountId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="InvDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="GSTRate" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="GSTValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Term" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TotalCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherCharges" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherDiscount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NetTotal" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="note" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ReturnDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="WalkIn" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="PhoneNo" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="AccountId1" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="AccountTitle" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="HeadId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="ContactName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ResAddress" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="WorkAdd" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ResPh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="WorkPh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Mobile2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="OtherPh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Opdr" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Opcr" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="CityId" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="AActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Activedt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Limit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_Master_Credit_Sale_Return_Insert" Method="sp_Master_Credit_Sale_Return_Insert">
+    <Parameter Name="SRId" Parameter="sRId" Type="System.Decimal" DbType="Decimal(18,0)" Direction="InOut" />
+    <Parameter Name="CrInvId" Parameter="crInvId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="FromAccountId" Parameter="fromAccountId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="InvDate" Parameter="invDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="GSTRate" Parameter="gSTRate" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="GSTValue" Parameter="gSTValue" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="Term" Parameter="term" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TotalCost" Parameter="totalCost" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="OtherCharges" Parameter="otherCharges" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="OtherDiscount" Parameter="otherDiscount" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="NetTotal" Parameter="netTotal" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="note" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ReturnDate" Parameter="returnDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="AccountId" Parameter="accountId" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="WalkIn" Parameter="walkIn" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="PhoneNo" Parameter="phoneNo" Type="System.String" DbType="NVarChar(15)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetMasterPurchase" Method="GetMasterPurchase">
+    <Parameter Name="Term" Parameter="term" Type="System.String" DbType="NVarChar(15)" />
+    <ElementType Name="GetMasterPurchaseResult">
+      <Column Name="FromAccount" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="FromAccountId" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ReceiveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SuppInv" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TotalCost" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Term" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OtherCharges" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="OtherDiscount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="stockno" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>
